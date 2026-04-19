@@ -22,7 +22,7 @@ spec:
         tier: database
     spec:
       containers:
-      - name: mysql:7.0
+      - name: mysql
         image: mamidalahemanchandra/mysql:v1
         imagePullPolicy: Always
 ---
