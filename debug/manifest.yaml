@@ -6,5 +6,5 @@ metadata:
 spec:
   containers:
   - name: debug
-    image: hemanchandra/debug
+    image: hemanchandra/debug:latest
     imagePullPolicy: Always
