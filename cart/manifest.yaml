@@ -17,25 +17,28 @@ metadata:
   labels:
     project: roboshop
     component: cart
-    tier: database
+    tier: backend
 spec:
   replicas: 1
   selector:
     matchLabels:
       project: roboshop
       component: cart
-      tier: database
+      tier: backend
   template:
     metadata:
       labels:
         project: roboshop
         component: cart
-        tier: database
+        tier: backend
     spec:
       containers:
       - name: cart
         image: mamidalahemanchandra/cart:v1
         imagePullPolicy: Always
+        envFrom:
+        - configMapRef:
+            name: cart
         ports:
         - name: liveness-port
           containerPort: 8080
@@ -63,7 +66,7 @@ spec:
   selector:
     project: roboshop
     component: cart
-    tier: database
+    tier: backend
   ports:
   - protocol: TCP
     port: 8080

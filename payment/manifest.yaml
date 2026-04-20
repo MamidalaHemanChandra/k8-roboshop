@@ -21,25 +21,28 @@ metadata:
   labels:
     project: roboshop
     component: payment
-    tier: database
+    tier: backend
 spec:
   replicas: 1
   selector:
     matchLabels:
       project: roboshop
       component: payment
-      tier: database
+      tier: backend
   template:
     metadata:
       labels:
         project: roboshop
         component: payment
-        tier: database
+        tier: backend
     spec:
       containers:
       - name: payment
         image: mamidalahemanchandra/payment:v1
         imagePullPolicy: Always
+        envFrom:
+        - configMapRef:
+            name: payment
         ports:
         - name: liveness-port
           containerPort: 8080
@@ -67,7 +70,7 @@ spec:
   selector:
     project: roboshop
     component: payment
-    tier: database
+    tier: backend
   ports:
   - protocol: TCP
     port: 8080
