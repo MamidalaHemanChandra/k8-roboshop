@@ -119,7 +119,7 @@ spec:
       volumes:
       - name: volume
         configMap:
-        name: nginx-config
+          name: nginx-config
 ---
 apiVersion: v1
 kind: Service
